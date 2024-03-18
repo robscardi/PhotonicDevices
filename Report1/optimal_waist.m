@@ -65,32 +65,32 @@ max_x_ind_bur = find(x_rib == max_x_bur);
 max_y_ind_bur = find(y_rib == max_y_bur);
 
 %plot the mode
-figure(1);
-s = surf(Y_rib,X_rib,mat_data_rib./max(mat_data_rib, [], "all"));
-s.EdgeColor ="flat";
-title("Si3N4/Si02 Rib Waveguide")
-xlabel("y[\mum]", Interpreter="tex");
-ylabel("x[\mum]", Interpreter="tex");
-ax = gca;
-ax.FontSize = 13;
-
-figure(2);
-s = surf(Y_rid,X_rid,mat_data_rid./max(mat_data_rid, [], "all"));
-s.EdgeColor ="flat";
-title("InGaAsP/InP Ridge Waveguide")
-xlabel("y[\mum]", Interpreter="tex");
-ylabel("x[\mum]", Interpreter="tex");
-ax = gca;
-ax.FontSize = 13;
-
-figure(3);
-s = surf(Y_bur,X_bur,mat_data_bur./max(mat_data_bur, [], "all"));
-s.EdgeColor ="flat";
-title("InGaAsP/InP Buried Waveguide")
-xlabel("y[\mum]", Interpreter="tex");
-ylabel("x[\mum]", Interpreter="tex");
-ax = gca;
-ax.FontSize = 13;
+% figure(1);
+% s = surf(Y_rib,X_rib,mat_data_rib./max(mat_data_rib, [], "all"));
+% s.EdgeColor ="flat";
+% title("Si3N4/Si02 Rib Waveguide")
+% xlabel("y[\mum]", Interpreter="tex");
+% ylabel("x[\mum]", Interpreter="tex");
+% ax = gca;
+% ax.FontSize = 13;
+% 
+% figure(2);
+% s = surf(Y_rid,X_rid,mat_data_rid./max(mat_data_rid, [], "all"));
+% s.EdgeColor ="flat";
+% title("InGaAsP/InP Ridge Waveguide")
+% xlabel("y[\mum]", Interpreter="tex");
+% ylabel("x[\mum]", Interpreter="tex");
+% ax = gca;
+% ax.FontSize = 13;
+% 
+% figure(3);
+% s = surf(Y_bur,X_bur,mat_data_bur./max(mat_data_bur, [], "all"));
+% s.EdgeColor ="flat";
+% title("InGaAsP/InP Buried Waveguide")
+% xlabel("y[\mum]", Interpreter="tex");
+% ylabel("x[\mum]", Interpreter="tex");
+% ax = gca;
+% ax.FontSize = 13;
 
 %range of w0
 w0 = 0.1:0.001:5;
@@ -202,6 +202,7 @@ p = plot(w0*2,mu_rib);
 title("\mu rib waveguide over gaussian spot", Interpreter="tex")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("\mu", Interpreter="tex");
+xlim([0.2 10])
 datatip(p, opt_w_rib*2, max(mu_rib, [], "all"));
 ax = gca;
 ax.FontSize = 13;
@@ -212,6 +213,7 @@ p = plot(w0*2,mu_rid);
 title("\mu ridge waveguide over gaussian spot", Interpreter="tex")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("\mu", Interpreter="tex");
+xlim([0.2 10])
 datatip(p, opt_w_rid*2, max(mu_rid, [], "all"));
 ax = gca;
 ax.FontSize = 13;
@@ -222,6 +224,7 @@ p = plot(w0*2,mu_bur);
 title("\mu buried waveguide over gaussian spot", Interpreter="tex")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("\mu", Interpreter="tex");
+xlim([0.2 10])
 datatip(p, opt_w_bur*2, max(mu_bur, [], "all"));
 ax = gca;
 ax.FontSize = 13;

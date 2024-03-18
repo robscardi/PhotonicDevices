@@ -74,6 +74,8 @@ s.EdgeColor ="flat";
 title("Si3N4/Si02 Rib Waveguide")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("x[\mum]", Interpreter="tex");
+xlim([-2.5 2.5])
+ylim([-1 1.99])
 ax = gca;
 ax.FontSize = 13;
 
@@ -83,6 +85,8 @@ s.EdgeColor ="flat";
 title("InGaAsP/InP Ridge Waveguide")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("x[\mum]", Interpreter="tex");
+xlim([-5 5])
+ylim([-2 3.98])
 ax = gca;
 ax.FontSize = 13;
 
@@ -92,6 +96,8 @@ s.EdgeColor ="flat";
 title("InGaAsP/InP Buried Waveguide")
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("x[\mum]", Interpreter="tex");
+xlim([-2.25 2.25])
+ylim([-1 0.99])
 ax = gca;
 ax.FontSize = 13;
 
@@ -110,13 +116,19 @@ gauss_mat_bur = zeros(yd_bur,xd_bur);
 for i = 1:1:numel(X_bur)
     gauss_mat_bur(i) = flat_gauss(X_bur(i)*um, Y_bur(i)*um, w0, max_x_bur*um, max_y_bur*um);
 end
+k = -5:0.01:5;
+[X,Y] = meshgrid(k,k);
+gauss_mat_def = zeros(numel(k),numel(k));
+for i = 1:1:numel(X)
+    gauss_mat_def(i) = flat_gauss(X(i)*um, Y(i)*um, 5*um, 0, 0);
+end
 
 
 %plot the gaussian
 figure(4)
-s = surf(X_rid,Y_rid, gauss_mat_rid./max(gauss_mat_rid, [], "all"));
+s = surf(X,Y, gauss_mat_def);
 s.EdgeColor ="flat";
-title("" + w0*2/um + "\mum-spot gaussian beam");
+title("10\mum-spot gaussian beam");
 xlabel("y[\mum]", Interpreter="tex");
 ylabel("x[\mum]", Interpreter="tex");
 ax = gca;
